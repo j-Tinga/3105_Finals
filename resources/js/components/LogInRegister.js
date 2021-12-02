@@ -1,6 +1,6 @@
 import React , {useState} from "react";
 import "./LoginRegister.css";
-import ".../"
+
 const LoginRegister = () => {
   const[addClass, setAddClass] = useState("");
 
