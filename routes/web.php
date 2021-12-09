@@ -21,6 +21,10 @@ Route::get('/account', function () {
     return view('welcome');
 });
 
-Route::get('/account/history', function () {
+Route::get('/history', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('welcome');
 });

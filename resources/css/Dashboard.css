@@ -1,0 +1,14 @@
+.Dashboard {
+    margin: 5rem;
+    text-align: center;
+}
+
+.span {
+    display: inline-block;
+}
+
+#text {
+    width: 400px;
+    margin-right: 5rem;
+    font-weight: bold;
+}
