@@ -1,0 +1,26 @@
+.History-page {
+    margin: 2rem;
+    text-align: center;
+}
+
+.history-header {
+    list-style: none;
+    display: inline-flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.history-header li {
+    font-size: 20px;
+}
+
+.history-header li:nth-child(1) {
+    margin-right: 3rem;
+}
+
+.history-header li:nth-child(2) {
+    margin-right: 20rem;
+}
+.history-header li:nth-child(3) {
+    margin-right: 5rem;
+}
