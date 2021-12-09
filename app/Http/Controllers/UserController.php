@@ -20,6 +20,8 @@ class UserController extends Controller
             'name' => $name,
             'email' => $email ,
             'password'=> $password]);
+
+        
     }
 
     function login(Request $req){

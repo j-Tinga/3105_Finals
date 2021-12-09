@@ -1,18 +1,22 @@
 import React , {useState} from "react";
 import "./LoginRegister.css";
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import DashBoard from "./DashBoard";
 
 const LoginRegister = () => {
   const[addClass, setAddClass] = useState("");
 
   return (
-    <div className={`container ${addClass}`} id="container">
+
+    <BrowserRouter>
+      <div className={`container ${addClass}`} id="container">
       <div className="form-container sign-up-container">
-         <form>
+         < form  >
            <h1>Create Account</h1>
            <input type="text" placeholder="NAME" />
            <input type="email" placeholder="EMAIL" />
            <input type="password" placeholder="PASSWORD" />
-           <button type="submit">REGISTER</button>
+           <button type="submit"> <Link to ="/dashboard"> REGISTER </Link></button>
          </form>
        </div>
       <div className="form-container sign-in-container">
@@ -20,7 +24,7 @@ const LoginRegister = () => {
            <h1>Login</h1>
            <input type="email" placeholder="EMAIL" />
            <input type="password" placeholder="PASSWORD" />
-           <button type="submit">LOGIN</button>
+           <button type="submit"> <Link to ="/dashboard"> LOGIN </Link></button>
          </form>
        </div>
       <div className="overlay-container">
@@ -38,6 +42,16 @@ const LoginRegister = () => {
           </div>
        </div>
     </div>
+
+    <div>
+    <Routes>
+        <Route path='/dashboard' element= {<DashBoard/>}></Route>
+    </Routes>
+    </div>
+
+   
+    </BrowserRouter>
+  
     );
 };
 export default LoginRegister;

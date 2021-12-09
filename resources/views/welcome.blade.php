@@ -22,10 +22,7 @@
     </head>
     <body class="antialiased">
        
-        <div id = "main"> 
-        <h1>MAIN PAGE</h1>
-
-        </div>
+        <div id = "main"> </div>
             <script src = "{{asset('js/app.js')}}"></script>
     </body>
 </html>
