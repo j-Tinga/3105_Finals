@@ -1,30 +1,65 @@
 import React , {useState} from "react";
 import "./LoginRegister.css";
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-import DashBoard from "./DashBoard";
+
 
 const LoginRegister = () => {
   const[addClass, setAddClass] = useState("");
+
+  const [Info, setInfo] = useState({
+    username:"",
+    email:'',
+    password:''
+  });
+
+  const handleInput = (e) =>{
+    const {name, value} = e.target;
+
+    setInfo(prevState =>({
+        ...prevState,
+        [name] : value
+    }))
+}
+
+  const signUp = async (e) =>{
+    e.preventDefault();
+
+    const res = await axios.post('http://127.0.0.1:8000/api/signUp', Info);
+
+    if(res.data.status === 200)
+    {
+      console.log(res.data.message);
+       setInfo({
+            userпame: "",
+            email: '',
+            password: '',
+        });
+    }
+  }
 
   return (
         <div className= "body">
           <div className={`container ${addClass}`} id="container">
             <div className="form-container sign-up-container">
-              <form className="LRForm">
+              
+              <form className="LRForm" onSubmit = {signUp}>
                 <h1 className="header1">Create Account</h1>
-                <input className ="inputBox" type="text" placeholder="NAME" />
-                <input className ="inputBox" type="email" placeholder="EMAIL" />
-                <input className ="inputBox" type="password" placeholder="PASSWORD" />
+                <input className ="inputBox" name = 'username' type="text"  onChange={handleInput} value={Info.username} placeholder="NAME" />
+                <input className ="inputBox" name = 'email' type="email" onChange={handleInput} value={Info.email}   placeholder="EMAIL" />
+                <input className ="inputBox"  name = 'password' type="password" onChange={handleInput} value={Info.password}  placeholder="PASSWORD" />
                 <button className="loginRegbuttons" type="submit"> REGISTER </button>
               </form>
+            
             </div>
             <div className="form-container sign-in-container">
+              
               <form className="LRForm">
                 <h1 className="header1">Login</h1>
-                <input className ="inputBox" type="email" placeholder="EMAIL" />
-                <input className ="inputBox" type="password" placeholder="PASSWORD" />
-                <button className="loginRegbuttons" type="submit"> LOGIN </button>
+                <input className ="inputBox" name = 'email' type="email" onChange={handleInput} value={Info.email} placeholder="EMAIL" />
+                <input className ="inputBox" name = 'password' type="password" onChange={handleInput} value={Info.password} placeholder="PASSWORD" />
+                <button className="loginRegbuttons" type="submit" > LOGIN </button>
               </form>
+            
             </div>
             <div className="overlay-container">
               <div className="overlay">

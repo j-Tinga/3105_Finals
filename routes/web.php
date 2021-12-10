@@ -16,9 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
 
-Route::post('/register', [UserController::class,'register']); // Singup URL
-Route::post('/reactlogin', [UserControler::class,'login']); //Log In URL
