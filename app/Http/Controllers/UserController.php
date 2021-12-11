@@ -6,6 +6,8 @@ use Illuminate\Support\Facades \DB;
 use Redirect, Response, File;
 use Illuminate\Support\Facades \Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
@@ -13,35 +15,53 @@ class UserController extends Controller
     public function register(Request $req)
     {
 
-        // $user = new User;
+        $user = new User;
 
-        // $user->name = $req->input('name');
-        // $user->email = $req->input('email');
-        // $user->password = Hash::make($req->input('password'));
-        // $user->save();
+        $user->name = $req->input('username');
+        $user->email = $req->input('email');
+        $user->password = Hash::make($req->input('password'));
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'User Saved Successfully',
-        ]);
+        $validator = Validator::make(
+            ['name' => 'required|unique'],
+            ['email' => 'required|unique:user|email'],
+        );
         
-        // DB::table('user')->insert([
-        //     'name' => $name,
-        //     'email' => $email ,
-        //     'password'=> $password]);
+        if($validator){
+            $user->save();
+            return response()->json([
+                'status' => 200,
+                'message' => 'User Saved Successfully',
+            ]);
+        }
+
+        if ($validator->fails()){
+            $messages = $validator->messages();
+            echo $message; 
+        }
+
     }
 
-    function login(Request $req){
-        $email = $req->input('email');
-        $password = $req->input('password');
+    public function login(Request $req){
 
-        $user = DB::table('users')->where('email', $email)->first();
+        $user = new User;
+
+        $user->email = $req->input('email');
+        $user->password = $req->input('password');
+
+        $emailV = User::where('email', '=', $user->email)->get();
+        $passV = User::where('password', '=', Hash::make($user->password))->get();
         
-        if(!Hash::check($password, $user->password)){
-            echo " Not Matched ";
+        if($emailV && $passV){ // && Hash::check($user->password, $users->password)
+            return response()->json([
+                'emailV' => $emailV,
+                'passV' => $passV,
+                'id' => $user->id,
+                'status' => 200,
+                'message' => 'User Login Successfully',
+            ]);
         }
         else{
-            echo $user->email;
+            echo " Not Matched ";
         }
     }
 }
