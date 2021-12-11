@@ -1,12 +1,16 @@
 import React from 'react';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import LoginRegister from './LogInRegister';
 
 function Main() {
     return (
-        <div className="container">
+        <BrowserRouter>
+         <div className="container">
            <LoginRegister />
-        </div>
+         </div>
+        </BrowserRouter>
+       
     );
 }
 
