@@ -21,22 +21,21 @@ class UserController extends Controller
         $user->email = $req->input('email');
         $user->password = Hash::make($req->input('password'));
 
-        $validator = Validator::make(
-            ['name' => 'required|unique'],
-            ['email' => 'required|unique:user|email'],
-        );
-        
-        if($validator){
+        $emailV = User::where('email', '=', $user->email)->first();
+
+        if($emailV === null){
             $user->save();
             return response()->json([
+                'validator' => $emailV,
                 'status' => 200,
                 'message' => 'User Saved Successfully',
             ]);
-        }
 
-        if ($validator->fails()){
-            $messages = $validator->messages();
-            echo $message; 
+        }else{
+            return response()->json([  // doesnt display tho
+                'status' => 400,
+                'message' => 'Error',
+            ]);
         }
 
     }
@@ -48,21 +47,26 @@ class UserController extends Controller
         $user->email = $req->input('email');
         $user->password = $req->input('password');
 
-        $emailV = User::where('email', '=', $user->email)->get();
-        $passV = User::where('password', '=', Hash::make($user->password))->get();
+        $userV = User::where('email', '=', $user->email)->first();
+        $passV = User::where('password', '=', $user->password)->first();
         
-        if($emailV && $passV){ // && Hash::check($user->password, $users->password)
+        if($userV && Hash::check($user->password, $userV->password)){ 
+            
             return response()->json([
-                'emailV' => $emailV,
-                'passV' => $passV,
-                'id' => $user->id,
+                'user found' => $userV,
+                'id' => $userV->id,
                 'status' => 200,
                 'message' => 'User Login Successfully',
             ]);
         }
         else{
-            echo " Not Matched ";
+             return response()->json([
+                'status' => 400,
+                'message' => 'Not found: Either email or password is invalid',
+            ]);
         }
+
+        
     }
 }
    
