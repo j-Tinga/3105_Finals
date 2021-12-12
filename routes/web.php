@@ -17,3 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
+=======
+Route::get('/account', function () {
+    return view('welcome');
+});
+
+Route::get('/history', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('welcome');
+});
+>>>>>>> 35a6ad70040747411744e1cdc56613907686911c

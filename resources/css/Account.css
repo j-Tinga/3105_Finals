@@ -1,0 +1,24 @@
+.Account-page {
+    margin: 2rem;
+    text-align: center;
+}
+
+.Account-pic {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+}
+
+.Menu-list {
+    gap: 4rem;
+    list-style: none;
+    display: inline-flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.Menu-list li {
+    font-size: 25px;
+}
+
+

@@ -21,8 +21,13 @@
         </style>
     </head>
     <body class="antialiased">
+<<<<<<< HEAD
        
         <div id = "main"> </div>
             <script src = "{{asset('js/app.js')}}"></script>
+=======
+        <div id = "main"></div>
+        <script src = "{{asset('js/app.js')}}"></script>
+>>>>>>> 35a6ad70040747411744e1cdc56613907686911c
     </body>
 </html>

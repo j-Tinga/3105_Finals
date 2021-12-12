@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades \DB;
 use Redirect, Response, File;
 use Illuminate\Support\Facades \Hash;
+=======
+use Illuminate\Support\Facades\DB;
+use Redirect, Response, File;
+use Illuminate\Support\Facades\Hash;
+>>>>>>> 35a6ad70040747411744e1cdc56613907686911c
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,5 +74,9 @@ class UserController extends Controller
 
         
     }
+<<<<<<< HEAD
 }
    
+=======
+}
+>>>>>>> 35a6ad70040747411744e1cdc56613907686911c
