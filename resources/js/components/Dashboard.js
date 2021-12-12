@@ -9,6 +9,8 @@ import dashAsset4 from '../../img/dashAsset4.png'
 import Cards from './Cards'
 import React, {useState, useEffect} from 'react'
 
+import Header from './Header';
+
 const Dashboard = () => {
     const [assets, setAssets] = useState(
         [
@@ -70,24 +72,27 @@ const Dashboard = () => {
     }
 
     return (
-        <div className='Dashboard'>
-            <div className='span' id = 'text'>
-                <p>En Eff Tee Marketplace is the go-to NFT marketplace from all blockchains
-                    Find the NFT from any blockchain in this marketplace</p>
-            </div>
-            <div className='span'>
-                <img src= {dash1} height = '100px' width = '100px'></img>
-                <img src= {dash2} height = '100px' width = '100px'></img>
-                <img src= {dash3} height = '100px' width = '100px'></img>
-            </div>
+        <div>
+        <Header/>
+            <div className='Dashboard'>
+                <div className='span' id = 'text'>
+                    <p>En Eff Tee Marketplace is the go-to NFT marketplace from all blockchains
+                        Find the NFT from any blockchain in this marketplace</p>
+                </div>
+                <div className='span'>
+                    <img src= {dash1} height = '100px' width = '100px'></img>
+                    <img src= {dash2} height = '100px' width = '100px'></img>
+                    <img src= {dash3} height = '100px' width = '100px'></img>
+                </div>
 
-            <div className = "Search">
-                <input type="text" onChange={searchHandler} id = "search-input"></input>
-                <button onClick={filterSearch} className="search-btn">Search</button>
-                <button onClick={resetSearch} className="button">Reset</button>
-            </div>
+                <div className = "Search">
+                    <input type="text" onChange={searchHandler} id = "search-input"></input>
+                    <button onClick={filterSearch} className="search-btn">Search</button>
+                    <button onClick={resetSearch} className="button">Reset</button>
+                </div>
 
-            <Cards filtered = {filtered}/>
+                <Cards filtered = {filtered}/>
+            </div>
         </div>
     );
 }

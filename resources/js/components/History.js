@@ -5,6 +5,7 @@ import bayc from '../../img/bayc.png'
 import doodles1 from '../../img/doodles-1.png'
 import doodles2 from '../../img/doodles-2.png'
 import Cart from './Cart'
+import Header from './Header'
 
 const History = () => {
     const [cart, setCart] = useState(
@@ -23,19 +24,24 @@ const History = () => {
             }
         ]
     );
+    
     return (
-        <div className = "History-page">
-            <ul className = "history-header">
-                <li> Transaction </li>
-                <li> Cart </li>
-                <li> Price </li>
-                <li> Date </li>
-            </ul>
+        <div>
+            <Header/>
+        
+            <div className = "History-page">
+                <ul className = "history-header">
+                    <li> Transaction </li>
+                    <li> Cart </li>
+                    <li> Price </li>
+                    <li> Date </li>
+                </ul>
 
-            <div className = "history-list">
-                {cart.map(cartItem => (
-                            <Cart key = {cartItem.id} cartItem = {cartItem}/> 
-                        ))}
+                <div className = "history-list">
+                    {cart.map(cartItem => (
+                                <Cart key = {cartItem.id} cartItem = {cartItem}/> 
+                            ))}
+                </div>
             </div>
         </div>
     );
